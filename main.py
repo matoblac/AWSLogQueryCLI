@@ -8,13 +8,11 @@ import sys
 
 def get_timestamps(time_str):
     try:
-        # Parse the input time string
-        input_time = datetime.datetime.strptime(time_str, "%m-%d-%Y %H:%M")
+        input_time = datetime.datetime.strptime(time_str, "%m-%d-%YYYY %H:%M")
     except ValueError:
         print("Time needs to be in the format MM-DD-YYYY HH:MM")
         sys.exit(1)
     
-    # Calculate 30 minutes before the input time
     end_time = int(input_time.timestamp())
     start_time = end_time - 1800  # 30 minutes in the past
     return start_time, end_time
@@ -78,6 +76,40 @@ def describe_cloudformation_stack():
     reasons = [event['ResourceStatusReason'] for event in response['StackEvents']]
     print(reasons)
 
+def query_cloudtrail_logs():
+    # Placeholder function for querying CloudTrail logs
+    print("This is a placeholder for querying CloudTrail logs.")
+
+def predefined_queries():
+    queries = [
+        {
+            'description': 'Query for ERROR logs in Lambda functions',
+            'log_group': '/aws/lambda/my-function',
+            'log_filter': '/ERROR/',
+            'limit': 20
+        },
+        {
+            'description': 'Query for WARN logs in ECS tasks',
+            'log_group': '/aws/ecs/container-instance',
+            'log_filter': '/WARN/',
+            'limit': 50
+        },
+        # Add more predefined queries here
+    ]
+    
+    print("Available Predefined Queries:")
+    for idx, query in enumerate(queries, 1):
+        print(f"{idx}. {query['description']}")
+    
+    choice = int(input("Choose a predefined query by number: ")) - 1
+    if 0 <= choice < len(queries):
+        query = queries[choice]
+        time_str = input("Enter the end time (MM-DD-YYYY HH:MM): ")
+        start_log_query(query['log_group'], query['log_filter'], query['limit'], time_str)
+    else:
+        print("Invalid choice. Exiting.")
+        sys.exit(1)
+
 def display_help():
     help_text = """
 AWS Log Checker Help
@@ -90,7 +122,9 @@ python main.py MM-DD-YYYY HH:MM
 Menu Options:
 1. CloudFormation Logs - Check the CloudFormation stack events for errors.
 2. CloudWatch Logs - Query CloudWatch log groups for errors in the last 30 minutes.
-3. Help - Display this help menu.
+3. CloudTrail Logs - Placeholder for querying CloudTrail logs.
+4. Predefined Queries - Execute predefined CloudWatch log queries for common scenarios.
+5. Help - Display this help menu.
 
 For CloudWatch Logs:
   - The script will list all available log groups.
@@ -101,11 +135,8 @@ For CloudWatch Logs:
 
 Example Workflow:
 1. Run the script: python main.py MM-DD-YYYY HH:MM
-2. Choose '2' for CloudWatch Logs.
-3. The script will list available log groups.
-4. Enter the log group numbers you want to query (e.g., '0 1').
-5. Enter the log levels to filter (e.g., /ERROR/ /requestId/).
-6. Enter the maximum number of log entries to retrieve (e.g., 20).
+2. Choose '2' for CloudWatch Logs or '4' for Predefined Queries.
+3. Follow the prompts to query logs or get help.
 """
     print(help_text)
 
@@ -114,9 +145,11 @@ def display_menu():
     print("===============================")
     print("1. CloudFormation Logs")
     print("2. CloudWatch Logs")
-    print("3. Help")
+    print("3. CloudTrail Logs")
+    print("4. Predefined CloudWatch Log Queries")
+    print("5. Help")
     print("===============================")
-    choice = input("Choose an option (1, 2, or 3): ")
+    choice = input("Choose an option (1, 2, 3, 4, or 5): ")
     return choice
 
 def main():
@@ -135,10 +168,17 @@ def main():
         print("You chose CloudWatch Logs")
         query_multiple_log_groups(time_str)
     elif choice == '3':
+        print("You chose CloudTrail Logs")
+        query_cloudtrail_logs()
+    elif choice == '4':
+        print("You chose Predefined Queries")
+        predefined_queries()
+    elif choice == '5':
         display_help()
     else:
         print("Invalid choice. Exiting.")
-        exit(1)
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()
+
