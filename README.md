@@ -76,11 +76,6 @@ The time argument in the command (e.g., `alqc "12-15-2023 14:30"`) specifies the
 ## Example
 ```sh
 alqc "12-15-2023 14:30"
-
-
-## Example
-```sh
-python main.py "12-15-2023 14:30"
 ```
 
 ### Testing With `moto`
