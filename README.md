@@ -91,5 +91,3 @@ python -m unittest discover -s tests
 ## TODO
 
 1. Add an option for parsing CloudTrail
-
-2. Create tests for CloudFormation 
