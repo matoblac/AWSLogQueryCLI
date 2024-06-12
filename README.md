@@ -92,6 +92,4 @@ python -m unittest discover -s tests
 
 1. Add an option for parsing CloudTrail
 
-2. It needs to be clearly explained that the time in `python main.py "12-15-2023 14:30"` is the endtime so, the query will be from `14:00 - 14:30` 
-
-3. Create tests for CloudFormation 
+2. Create tests for CloudFormation 
