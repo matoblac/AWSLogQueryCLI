@@ -1,9 +1,16 @@
 # AWSLogQueryCLI
 
 ## Description
+
 AWS Log Checker is a versatile tool for querying and analyzing AWS CloudWatch and CloudTrail logs, helping to streamline log management and monitoring. It's functionality can be extended for automation
 
+## prerequisites
+
+- Python 3.6 or higher
+- AWS credentials configured
+
 ## Usage
+
 1. Run the script:
     ```sh
     python main.py
@@ -18,4 +25,14 @@ AWS Log Checker is a versatile tool for querying and analyzing AWS CloudWatch an
 
 ## Example
 ```sh
-python main.py
+python main.py "12-15-2023 14:30"
+```
+
+## TODO
+1. main.py needs to be changed to something more descriptive of the actual program begin ran...
+
+2. Add an option for parsing CloudTrail
+
+3. It needs to be clearly explained that the time in `python main.py "12-15-2023 14:30"` is the endtime so, the query will be from `14:00 - 14:30` 
+
+4. Add unit testing file in case the file ends up becoming much more complicated in the future 
