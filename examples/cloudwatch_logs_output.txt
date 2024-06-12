@@ -1,0 +1,17 @@
+{
+  "status": "Complete",
+  "statistics": {
+    "recordsMatched": 20,
+    "recordsScanned": 1000
+  },
+  "results": [
+    {
+      "field": "@message",
+      "value": "ERROR: An unexpected error occurred in Lambda function."
+    },
+    {
+      "field": "@message",
+      "value": "WARN: Potential issue detected in Lambda function."
+    }
+  ]
+}

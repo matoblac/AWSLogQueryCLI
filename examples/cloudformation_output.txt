@@ -1,0 +1,5 @@
+[
+    "User Initiated",
+    "Resource creation Initiated",
+    "Resource creation Complete"
+]
