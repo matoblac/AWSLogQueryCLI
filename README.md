@@ -69,6 +69,10 @@ AWS Log Checker is a versatile tool for querying and analyzing AWS CloudWatch an
 
 3. Follow the prompts to query logs or get help.
 
+### Time Argument
+
+The time argument in the command (e.g., `alqc "12-15-2023 14:30"`) specifies the end time for the query. The script will query logs from 30 minutes before this time up to the specified end time. In the given example, the script will query logs from `14:00` to `14:30` on `12-15-2023`.
+
 ## Example
 ```sh
 alqc "12-15-2023 14:30"
@@ -90,10 +94,9 @@ python -m unittest discover -s tests
 
 
 ## TODO
-1. main.py needs to be changed to something more descriptive of the actual program begin ran...
 
-2. Add an option for parsing CloudTrail
+1. Add an option for parsing CloudTrail
 
-3. It needs to be clearly explained that the time in `python main.py "12-15-2023 14:30"` is the endtime so, the query will be from `14:00 - 14:30` 
+2. It needs to be clearly explained that the time in `python main.py "12-15-2023 14:30"` is the endtime so, the query will be from `14:00 - 14:30` 
 
-4. Create tests for CloudFormation 
+3. Create tests for CloudFormation 

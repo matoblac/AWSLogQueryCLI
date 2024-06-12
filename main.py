@@ -70,7 +70,7 @@ def describe_cloudformation_stack():
     
     response = client.describe_stack_events(
         StackName=stack_name,
-        MaxItems=2
+        MaxItems=15
     )
     
     reasons = [event['ResourceStatusReason'] for event in response['StackEvents']]
