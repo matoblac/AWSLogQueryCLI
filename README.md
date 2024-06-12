@@ -34,5 +34,3 @@ python main.py "12-15-2023 14:30"
 2. Add an option for parsing CloudTrail
 
 3. It needs to be clearly explained that the time in `python main.py "12-15-2023 14:30"` is the endtime so, the query will be from `14:00 - 14:30` 
-
-4. Add unit testing file in case the file ends up becoming much more complicated in the future 
