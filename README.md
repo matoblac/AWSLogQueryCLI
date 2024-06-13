@@ -2,7 +2,9 @@
 
 ## Description
 
-AWS Log Checker is a versatile tool for querying and analyzing AWS CloudWatch and CloudTrail logs, helping to streamline log management and monitoring. Its functionality can be extended for automation.
+AWS Log Checker is a versatile tool for querying and analyzing AWS CloudWatch, CloudFormation, and CloudTrail logs, helping to streamline log management and monitoring. Its functionality can be extended for automation and customized queries.
+
+Originally developed as an AWS CLI wrapper, AWS Log Checker was converted to Python to facilitate easier addition of custom queries and enhanced functionality. By leveraging Python, the tool allows for more complex and flexible log queries, integration with other systems, and automation of repetitive tasks, providing a more powerful and user-friendly solution compared to using the AWS CLI alone.
 
 ## Prerequisites
 
@@ -72,11 +74,6 @@ AWS Log Checker is a versatile tool for querying and analyzing AWS CloudWatch an
 ### Time Argument
 
 The time argument in the command (e.g., `alqc "12-15-2023 14:30"`) specifies the end time for the query. The script will query logs from 30 minutes before this time up to the specified end time. In the given example, the script will query logs from `14:00` to `14:30` on `12-15-2023`.
-
-## Example
-```sh
-alqc "12-15-2023 14:30"
-```
 
 ### Testing With `moto`
 
