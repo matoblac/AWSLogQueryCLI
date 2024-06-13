@@ -67,8 +67,10 @@ Originally developed as an AWS CLI wrapper, AWS Log Checker was converted to Pyt
 2. Choose an option:
     - 1: CloudFormation Logs
     - 2: CloudWatch Logs
-    - 3: Help
-
+    - 3: CloudTrail Logs
+    - 4: Predefined Queries
+    - 5: Help
+    
 3. Follow the prompts to query logs or get help.
 
 ### Time Argument
