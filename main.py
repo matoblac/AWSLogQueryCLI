@@ -8,7 +8,7 @@ import sys
 
 def get_timestamps(time_str):
     try:
-        input_time = datetime.datetime.strptime(time_str, "%m-%d-%YYYY %H:%M")
+        input_time = datetime.datetime.strptime(time_str, "%m-%d-%Y %H:%M")
     except ValueError:
         print("Time needs to be in the format MM-DD-YYYY HH:MM")
         sys.exit(1)
@@ -76,10 +76,6 @@ def describe_cloudformation_stack():
     reasons = [event['ResourceStatusReason'] for event in response['StackEvents']]
     print(reasons)
 
-def query_cloudtrail_logs():
-    # Placeholder function for querying CloudTrail logs
-    print("This is a placeholder for querying CloudTrail logs.")
-
 def predefined_queries():
     queries = [
         {
@@ -122,9 +118,8 @@ python main.py MM-DD-YYYY HH:MM
 Menu Options:
 1. CloudFormation Logs - Check the CloudFormation stack events for errors.
 2. CloudWatch Logs - Query CloudWatch log groups for errors in the last 30 minutes.
-3. CloudTrail Logs - Placeholder for querying CloudTrail logs.
-4. Predefined Queries - Execute predefined CloudWatch log queries for common scenarios.
-5. Help - Display this help menu.
+3. Predefined Queries - Execute predefined log queries for common scenarios.
+4. Help - Display this help menu.
 
 For CloudWatch Logs:
   - The script will list all available log groups.
@@ -135,7 +130,7 @@ For CloudWatch Logs:
 
 Example Workflow:
 1. Run the script: python main.py MM-DD-YYYY HH:MM
-2. Choose '2' for CloudWatch Logs or '4' for Predefined Queries.
+2. Choose '2' for CloudWatch Logs or '3' for Predefined Queries.
 3. Follow the prompts to query logs or get help.
 """
     print(help_text)
@@ -145,11 +140,10 @@ def display_menu():
     print("===============================")
     print("1. CloudFormation Logs")
     print("2. CloudWatch Logs")
-    print("3. CloudTrail Logs")
-    print("4. Predefined CloudWatch Log Queries")
-    print("5. Help")
+    print("3. Predefined Queries")
+    print("4. Help")
     print("===============================")
-    choice = input("Choose an option (1, 2, 3, 4, or 5): ")
+    choice = input("Choose an option (1, 2, 3, or 4): ")
     return choice
 
 def main():
@@ -168,12 +162,9 @@ def main():
         print("You chose CloudWatch Logs")
         query_multiple_log_groups(time_str)
     elif choice == '3':
-        print("You chose CloudTrail Logs")
-        query_cloudtrail_logs()
-    elif choice == '4':
         print("You chose Predefined Queries")
         predefined_queries()
-    elif choice == '5':
+    elif choice == '4':
         display_help()
     else:
         print("Invalid choice. Exiting.")

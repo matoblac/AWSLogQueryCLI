@@ -2,7 +2,7 @@
 
 ## Description
 
-AWS Log Checker is a versatile tool for querying and analyzing AWS CloudWatch, CloudFormation, and CloudTrail logs, helping to streamline log management and monitoring. Its functionality can be extended for automation and customized queries.
+AWS Log Checker is a versatile tool for querying and analyzing AWS CloudWatch and CloudFormation logs helping to streamline log management and monitoring. Its functionality can be extended for automation and customized queries.
 
 Originally developed as an AWS CLI wrapper, AWS Log Checker was converted to Python to facilitate easier addition of custom queries and enhanced functionality. By leveraging Python, the tool allows for more complex and flexible log queries, integration with other systems, and automation of repetitive tasks, providing a more powerful and user-friendly solution compared to using the AWS CLI alone.
 
@@ -67,9 +67,8 @@ Originally developed as an AWS CLI wrapper, AWS Log Checker was converted to Pyt
 2. Choose an option:
     - 1: CloudFormation Logs
     - 2: CloudWatch Logs
-    - 3: CloudTrail Logs
-    - 4: Predefined Queries
-    - 5: Help
+    - 3: Predefined Queries
+    - 4: Help
     
 3. Follow the prompts to query logs or get help.
 
@@ -82,11 +81,7 @@ The time argument in the command (e.g., `alqc "12-15-2023 14:30"`) specifies the
 create a test file using `moto` to mock AWS services.
 
 You can run your tests using the following command:
+
 ```sh
 python -m unittest discover -s tests
 ```
-
-
-## TODO
-
-1. Add an option for parsing CloudTrail
